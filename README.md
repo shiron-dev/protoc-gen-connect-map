@@ -48,7 +48,7 @@ var exampleServiceMap = map[string][]string{
 1. Add schema.proto to your project(Recommended to use git submodule)
 
    ```shell
-   git submodule add protoc-gen-connect-map https://github.com/shiron-dev/protoc-gen-connect-map.git
+   git submodule add https://github.com/shiron-dev/protoc-gen-connect-map.git protoc-gen-connect-map
    ```
 
 1. Install protoc-gen-connect-map or build it yourself
@@ -56,7 +56,7 @@ var exampleServiceMap = map[string][]string{
    1. Install the plugin using go install
 
       ```shell
-      go install github.com/shiron-dev/protoc-gen-connect-map/cmd/protoc-gen-connect-map@latest
+      go install github.com/shiron-dev/protoc-gen-connect-map@latest
       ```
 
    1. Build the plugin yourself(use git submodule)
