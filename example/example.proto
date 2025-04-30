@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package example;
+
+import "google/protobuf/descriptor.proto";
+import "protoc-gen-connect-map/proto/schema.proto";
+
+option go_package = "example.protobuf;example";
+
+message ExampleRequest {
+  string name = 1;
+}
+message ExampleResponse {
+  string message = 1;
+}
+
+service ExampleService {
+  rpc ExampleMethod(ExampleRequest) returns (ExampleResponse) {
+    option (connect_map.connect_map) = {
+      key: "example_key"
+      key: "example_key2"
+      key: "example_key3"
+      key: "example_key4"
+    };
+  }
+}
