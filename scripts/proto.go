@@ -35,7 +35,7 @@ func main() {
 
 	f.Close()
 
-	f, err = os.Create("proto/schema.proto")
+	f, err = os.Create("proto/connect_map.proto")
 	if err != nil {
 		panic(err)
 	}

@@ -3,7 +3,7 @@ syntax = "proto3";
 package example;
 
 import "google/protobuf/descriptor.proto";
-import "protoc-gen-connect-map/proto/schema.proto";
+import "protoc-gen-connect-map/proto/connect_map.proto";
 
 option go_package = "example.protobuf;example";
 
