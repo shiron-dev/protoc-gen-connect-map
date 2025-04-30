@@ -6,7 +6,7 @@ init:
 	go mod tidy
 
 install:
-	go install ./cmd/protoc-gen-connect-map.go
+	go install ./main.go
 
 gen:
 	go run ./scripts/proto.go
@@ -15,7 +15,7 @@ cmd/build.pd.go: gen
 	protoc -I. --go_out=. proto/build.proto
 
 protoc-gen-connect-map: cmd/build.pd.go
-	go build -o protoc-gen-connect-map ./cmd/protoc-gen-connect-map.go
+	go build -o protoc-gen-connect-map ./main.go
 
 build: protoc-gen-connect-map
 	chmod a+x protoc-gen-connect-map
