@@ -8,7 +8,6 @@ import (
 
 	"google.golang.org/protobuf/compiler/protogen"
 	"google.golang.org/protobuf/proto"
-	"google.golang.org/protobuf/types/descriptorpb"
 
 	"github.com/shiron-dev/protoc-gen-connect-map/gen"
 )
@@ -62,10 +61,22 @@ func generateAclMap(g *protogen.GeneratedFile, protoFile *protogen.File, service
 	var methods []MethodData
 	for _, method := range service.Methods {
 		path := getPathName(protoFile, method)
-		opts := method.Desc.Options().(*descriptorpb.MethodOptions)
-		ext := proto.GetExtension(opts, gen.E_ConnectMap)
+		opts := method.Desc.Options()
+		if opts == nil {
+			continue
+		}
 
-		optKeys := ext.(*gen.MapOptions).Key
+		ext := proto.GetExtension(opts, gen.E_ConnectMap)
+		if ext == nil {
+			continue
+		}
+
+		mapOptions, ok := ext.(*gen.MapOptions)
+		if !ok || mapOptions == nil {
+			continue
+		}
+
+		optKeys := mapOptions.Key
 		if len(optKeys) == 0 {
 			continue
 		}
