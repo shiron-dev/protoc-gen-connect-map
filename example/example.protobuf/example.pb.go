@@ -115,17 +115,18 @@ var File_example_proto protoreflect.FileDescriptor
 
 const file_example_proto_rawDesc = "" +
 	"\n" +
-	"\rexample.proto\x12\aexample\x1a google/protobuf/descriptor.proto\x1a)protoc-gen-connect-map/proto/schema.proto\"$\n" +
+	"\rexample.proto\x12\aexample\x1a google/protobuf/descriptor.proto\x1a.protoc-gen-connect-map/proto/connect_map.proto\"$\n" +
 	"\x0eExampleRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\"+\n" +
 	"\x0fExampleResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage2\x91\x01\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage2\xd8\x01\n" +
 	"\x0eExampleService\x12\x7f\n" +
 	"\rExampleMethod\x12\x17.example.ExampleRequest\x1a\x18.example.ExampleResponse\";\xaa\xbb\x187\n" +
 	"\vexample_key\n" +
 	"\fexample_key2\n" +
 	"\fexample_key3\n" +
-	"\fexample_key4B\x1aZ\x18example.protobuf;exampleb\x06proto3"
+	"\fexample_key4\x12E\n" +
+	"\x0eExampleMethod2\x12\x17.example.ExampleRequest\x1a\x18.example.ExampleResponse\"\x00B\x1aZ\x18example.protobuf;exampleb\x06proto3"
 
 var (
 	file_example_proto_rawDescOnce sync.Once
@@ -146,9 +147,11 @@ var file_example_proto_goTypes = []any{
 }
 var file_example_proto_depIdxs = []int32{
 	0, // 0: example.ExampleService.ExampleMethod:input_type -> example.ExampleRequest
-	1, // 1: example.ExampleService.ExampleMethod:output_type -> example.ExampleResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	0, // 1: example.ExampleService.ExampleMethod2:input_type -> example.ExampleRequest
+	1, // 2: example.ExampleService.ExampleMethod:output_type -> example.ExampleResponse
+	1, // 3: example.ExampleService.ExampleMethod2:output_type -> example.ExampleResponse
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name

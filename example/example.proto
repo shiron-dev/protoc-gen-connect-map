@@ -23,4 +23,6 @@ service ExampleService {
       key: "example_key4"
     };
   }
+
+  rpc ExampleMethod2(ExampleRequest) returns (ExampleResponse) {}
 }
