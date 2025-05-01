@@ -25,4 +25,8 @@ service ExampleService {
   }
 
   rpc ExampleMethod2(ExampleRequest) returns (ExampleResponse) {}
+
+  rpc ExampleMethod3(ExampleRequest) returns (ExampleResponse) {
+    option (connect_map.connect_map) = {};
+  }
 }
