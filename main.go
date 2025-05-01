@@ -39,6 +39,13 @@ func getPathName(protoFile *protogen.File, method *protogen.Method) string {
 	return fmt.Sprintf("/%s.%s/%s", protoFile.Desc.FullName(), method.Parent.Desc.Name(), method.Desc.Name())
 }
 
+func capitalizeFirstChar(s string) string {
+	if len(s) == 0 {
+		return s
+	}
+	return string(unicode.ToUpper(rune(s[0]))) + s[1:]
+}
+
 func generateAclMap(g *protogen.GeneratedFile, protoFile *protogen.File, service *protogen.Service) bool {
 	tmpl := `var {{ .ServiceName }}Map = map[string][]string {
 {{- range .Methods }}
@@ -88,7 +95,7 @@ func generateAclMap(g *protogen.GeneratedFile, protoFile *protogen.File, service
 	}
 
 	tmplData := TemplateData{
-		ServiceName: lowerFirstChar(string(service.Desc.Name())),
+		ServiceName: capitalizeFirstChar(string(service.Desc.Name())),
 		Methods:     methods,
 	}
 
@@ -103,11 +110,4 @@ func generateAclMap(g *protogen.GeneratedFile, protoFile *protogen.File, service
 	g.P("")
 
 	return true
-}
-
-func lowerFirstChar(s string) string {
-	if len(s) == 0 {
-		return s
-	}
-	return string(unicode.ToLower(rune(s[0]))) + s[1:]
 }

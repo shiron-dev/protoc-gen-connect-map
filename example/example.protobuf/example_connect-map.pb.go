@@ -1,6 +1,6 @@
 package example
 
-var exampleServiceMap = map[string][]string{
+var ExampleServiceMap = map[string][]string{
 	"/example.ExampleService/ExampleMethod": {
 		"example_key",
 		"example_key2",
