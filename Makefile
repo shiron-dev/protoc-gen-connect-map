@@ -19,4 +19,5 @@ build: protoc-gen-connect-map
 
 example: build
 	cd example && buf generate proto
-	cd example && protoc -I. --plugin=$(MAKEFILE_DIR)protoc-gen-connect-map --connect-map_out=. example.proto
+	cd example && protoc -I. --plugin=$(MAKEFILE_DIR)protoc-gen-connect-map --connect-map_out=gen/connect_map proto/example.proto
+	cd example && go build -o example ./cmd/main.go

@@ -5,7 +5,7 @@ package example;
 import "connect_map.proto";
 import "google/protobuf/descriptor.proto";
 
-option go_package = "github.com/shiron-dev/protoc-gen-connect-map/example;example";
+option go_package = "github.com/shiron-dev/protoc-gen-connect-map/example/gen/example;example";
 
 message ExampleRequest {
   string name = 1;
