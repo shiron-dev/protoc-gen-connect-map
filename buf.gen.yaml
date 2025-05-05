@@ -1,0 +1,15 @@
+# buf.gen.yaml
+version: v2
+managed:
+  enabled: true
+  override:
+    - file_option: go_package
+      value: .;gen
+  disable:
+    - path: example
+plugins:
+  - remote: buf.build/protocolbuffers/go
+    out: gen
+
+inputs:
+  - proto_file: connect_map.proto
