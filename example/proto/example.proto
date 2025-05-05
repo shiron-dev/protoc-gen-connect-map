@@ -2,10 +2,10 @@ syntax = "proto3";
 
 package example;
 
+import "connect_map.proto";
 import "google/protobuf/descriptor.proto";
-import "protoc-gen-connect-map/proto/connect_map.proto";
 
-option go_package = "example.protobuf;example";
+option go_package = "github.com/shiron-dev/protoc-gen-connect-map/example;example";
 
 message ExampleRequest {
   string name = 1;

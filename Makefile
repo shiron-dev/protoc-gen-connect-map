@@ -18,4 +18,5 @@ build: protoc-gen-connect-map
 	chmod a+x protoc-gen-connect-map
 
 example: build
-	cd example && protoc -I. --plugin=$(MAKEFILE_DIR)protoc-gen-connect-map --connect-map_out=. --go_out=. example.proto
+	cd example && buf generate proto
+	cd example && protoc -I. --plugin=$(MAKEFILE_DIR)protoc-gen-connect-map --connect-map_out=. example.proto
