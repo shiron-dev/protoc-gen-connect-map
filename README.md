@@ -14,7 +14,7 @@ package example;
 import "google/protobuf/descriptor.proto";
 import "protoc-gen-connect-map/proto/connect_map.proto";
 
-option go_package = "example.protobuf;example";
+option go_package = "github.com/shiron-dev/protoc-gen-connect-map/example/gen/example;example";
 
 message ExampleRequest {
   string name = 1;
@@ -33,7 +33,7 @@ service ExampleService {
 
 ```
 
-```golang
+```go
 package example
 
 var exampleServiceMap = map[string][]string{
@@ -45,44 +45,61 @@ var exampleServiceMap = map[string][]string{
 
 ## How to use
 
-1. Add schema.proto to your project(Recommended to use git submodule)
+1. Add protoc-gen-connect-map proto to your project
+
+   Add dependency to your buf.yaml
+
+   ```buf.yaml
+   deps:
+   - buf.build/shiron-dev/protoc-gen-connect-map
+   ```
+
+   And locked the dependency
 
    ```shell
-   git submodule add https://github.com/shiron-dev/protoc-gen-connect-map.git protoc-gen-connect-map
+   buf dep update
    ```
 
-1. Install protoc-gen-connect-map or build it yourself
+2. Install protoc-gen-connect-map
 
-   1. Install the plugin using go install
-
-      ```shell
-      go install github.com/shiron-dev/protoc-gen-connect-map@latest
-      ```
-
-   1. Build the plugin yourself(use git submodule)
-
-      ```shell
-      cd protoc-gen-connect-map
-      make build
-      ```
-
-1. Import schema.proto in your proto file
-
-   ```protobuf
-   import "protoc-gen-connect-map/proto/connect_map.proto";
+   ```shell
+   go install github.com/shiron-dev/protoc-gen-connect-map@latest
    ```
 
-1. Generate the code using protoc
+   Add plugin and add override settings to your buf.gen.yaml
 
-   1. Install the plugin using go install
+   > [!NOTE] 
+   > Do not output protoc-gen-connect-map to the same destination as the others
+   > Other plugins may respect the overridden go_package_prefix, and paths may be covered.
 
-      ```shell
-      protoc --connect-map_out=. your.proto
-      ```
+   ```buf.gen.yaml
+   version: v2
+   managed:
+      enabled: true
+      override:
+         - file_option: go_package_prefix
+            value: github.com/shiron-dev/protoc-gen-connect-map/example/gen/example;example
 
+   plugins:
+      - remote: buf.build/protocolbuffers/go
+         out: gen/example
+         opt: paths=source_relative
+         include_imports: true
+      - remote: buf.build/connectrpc/go
+         out: gen/example
+         opt: paths=source_relative
+      - local: protoc-gen-connect-map
+         out: gen/connect_map
+         opt: paths=source_relative
 
-   1. Build the plugin yourself(use git submodule)
+   ```
 
-      ```shell
-      protoc --plugin=protoc-gen-connect-map/protoc-gen-connect-map --connect-map_out=. your.proto
-      ```
+   - Don't forget to override the managed go_package_prefix!
+   - Include_imports in buf.build/protocolbuffers/go must be true
+   - It is recommended to set paths=source_relative to simplify the configuration
+
+3. Generate code
+
+   ```shell
+   buf generate
+   ```

@@ -1,11 +1,9 @@
-# buf.gen.yaml
 version: v2
 managed:
   enabled: true
   override:
     - file_option: go_package_prefix
       value: github.com/shiron-dev/protoc-gen-connect-map/example/gen/example;example
-      # value: gen/example;example
 
 plugins:
   - remote: buf.build/protocolbuffers/go
@@ -15,6 +13,6 @@ plugins:
   - remote: buf.build/connectrpc/go
     out: gen/example
     opt: paths=source_relative
-  - local: /Users/shiron/projects/github.com/shiron-dev/protoc-gen-connect-map/protoc-gen-connect-map
+  - local: protoc-gen-connect-map
     out: gen/connect_map
     opt: paths=source_relative
