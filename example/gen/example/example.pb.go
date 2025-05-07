@@ -126,8 +126,8 @@ const file_example_proto_rawDesc = "" +
 	"\fexample_key3\n" +
 	"\fexample_key4\x12E\n" +
 	"\x0eExampleMethod2\x12\x17.example.ExampleRequest\x1a\x18.example.ExampleResponse\"\x00\x12I\n" +
-	"\x0eExampleMethod3\x12\x17.example.ExampleRequest\x1a\x18.example.ExampleResponse\"\x04\xaa\xbb\x18\x00B\xa0\x01\n" +
-	"\vcom.exampleB\fExampleProtoP\x01ZGgithub.com/shiron-dev/protoc-gen-connect-go/example/gen/example;example\xa2\x02\x03EXX\xaa\x02\aExample\xca\x02\aExample\xe2\x02\x13Example\\GPBMetadata\xea\x02\aExampleb\x06proto3"
+	"\x0eExampleMethod3\x12\x17.example.ExampleRequest\x1a\x18.example.ExampleResponse\"\x04\xaa\xbb\x18\x00B\xa1\x01\n" +
+	"\vcom.exampleB\fExampleProtoP\x01ZHgithub.com/shiron-dev/protoc-gen-connect-map/example/gen/example;example\xa2\x02\x03EXX\xaa\x02\aExample\xca\x02\aExample\xe2\x02\x13Example\\GPBMetadata\xea\x02\aExampleb\x06proto3"
 
 var (
 	file_example_proto_rawDescOnce sync.Once

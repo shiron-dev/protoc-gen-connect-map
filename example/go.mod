@@ -1,4 +1,4 @@
-module github.com/shiron-dev/protoc-gen-connect-go/example
+module github.com/shiron-dev/protoc-gen-connect-map/example
 
 go 1.24.2
 

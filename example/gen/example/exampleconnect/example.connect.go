@@ -8,7 +8,7 @@ import (
 	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	example "github.com/shiron-dev/protoc-gen-connect-go/example/gen/example"
+	example "github.com/shiron-dev/protoc-gen-connect-map/example/gen/example"
 	http "net/http"
 	strings "strings"
 )
