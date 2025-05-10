@@ -1,6 +1,6 @@
 module github.com/shiron-dev/protoc-gen-connect-map/example
 
-go 1.24.2
+go 1.24.3
 
 require (
 	connectrpc.com/connect v1.18.1
